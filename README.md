@@ -6,4 +6,5 @@
 
 2. Afterwards, I proceeded to calculate total sales (quantity * unit price).
 
-3. Next, I created a summary table to analyze sales performance by category, product,region, using functions like `SUM` and `AVERAGE` to derive insights.
+3. Next, I created a Pivot Table to analyze sales performance by category, product, region, and month ( effectively grouping the dates into monthly intervals).
+   
