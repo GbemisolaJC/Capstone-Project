@@ -1,14 +1,41 @@
-# Capstone-Project
+# Capstone-Project (Sales Performance Analysis)
 
-## Sales Performance Analysis
-Before i started this project, i took a while to undertsand the data and the question.
-And hereare my observations
+## Project Overview: Analyzing Sales Data
 
-1. I started by using Excel to clean my data by removing duplicates using all columns as criteria.
+**Objective**:  
+To analyze sales data to uncover insights that support data-driven decision-making, enhance sales strategies, and optimize inventory management.
 
-2. Afterwards, I proceeded to calculate total sales (quantity * unit price).
+### Expected Outcomes:
+- Clear understanding of sales performance.
+- Informed decisions on marketing and inventory.
+- Enhanced profitability through targeted strategies.
 
-3. Next, I created a Pivot Table to analyze sales performance by category, product, region, and month ( effectively grouping the dates into monthly intervals).
+### Tools:
+- Excel
+- SQL
+- Power BI
+
+---
+
+### Data Understanding and Observations:
+
+Before starting this project, I took some time to understand the data and the key questions I needed to answer. Here are my observations:
+
+1. **Data Cleaning**:  
+   I started by using **Excel** to clean the data. The first task was to **remove duplicates**, using all columns as criteria to ensure the data was accurate and consistent.
+
+2. **Calculating Total Sales**:  
+   After cleaning the data, I proceeded to calculate the **total sales** for each transaction by multiplying the **quantity** by the **unit price**. This step provided a more comprehensive view of total revenue.
+
+3. **Sales Analysis with Pivot Table**:  
+   Next, I created a **Pivot Table** in Excel to analyze the sales performance. This allowed me to group sales data by:
+   - **Category**
+   - **Product**
+   - **Region**
+   - **Month** (I grouped the dates into monthly intervals for better analysis)
+
+The Pivot Table was essential for uncovering trends and gaining insights into sales patterns across different dimensions.
+
 
 ![image](https://github.com/user-attachments/assets/494b80dc-2f2a-48e7-8155-cdfa12656995)
 
@@ -99,4 +126,14 @@ GROUP BY region
 SELECT product
 FROM SalesData
 GROUP BY product
-HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;
+HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0
+
+
+
+
+
+
+
+
+
+
