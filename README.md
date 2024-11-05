@@ -1,4 +1,4 @@
-# Capstone-Project (Sales Performance Analysis)
+# Capstone-Project 
 
 [Project Overview](project-overview)
 
@@ -8,9 +8,23 @@
 
 [Data Understanding and Observations](Data-Understanding-and-Observations)
 
+[SQL Analysis on Sales Data](SQL-Analysis-on-Sales-Data)
+
 [Visualising Sales Data with Power BI](Visualising-Sales-Data-with-Power-BI)
 
 [Capstone Project 2](Capstone-Project-2)
+
+[Objective](Objective)
+
+[Tools Used](Tools-Used)
+
+[Expected Outcomes](#expected-outcomes)
+
+[pivot Presentation](pivot-Presentation)
+ 
+[Visualising customer Data with Power BI](Visualising-customer-Data-with-Power-BI)
+
+# Sales Performance Analysis
 
 ## Project Overview: Analyzing Sales Data
 
@@ -89,6 +103,81 @@ In this formula, "RegionName" is replaced with the specific name of the region w
 ![image](https://github.com/user-attachments/assets/800e66cf-0d6a-4e18-821a-a54676df455c)
 
 
+# SQL Analysis on Sales Data
+
+## Overview
+This queries provides an analysis of sales data using SQL, Each query addresses a specific aspect of the sales performance.
+
+
+
+### Total sales for each product category
+```sql
+SELECT product, SUM(Total_sale) AS Total_sale
+FROM SalesData
+GROUP BY product;
+```
+
+### Number of sales transactions in each region 
+```sql
+SELECT region, COUNT(*) AS transaction_count
+FROM SalesData
+GROUP BY region;
+```
+
+### Highest-selling product by total sales value
+```sql
+SELECT TOP 1 product, SUM(Total_sale) AS total_sales
+FROM SalesData
+GROUP BY product
+ORDER BY total_sales DESC;
+```
+
+### Total revenue per product
+```sql
+SELECT product, SUM(Total_sale) AS total_revenue
+FROM SalesData
+GROUP BY product;
+```
+
+### Monthly sales totals for the current year
+```sql
+SELECT MONTH(Orderdate) AS month,
+SUM(Total_sale) AS total_sales
+FROM SalesData
+WHERE YEAR(Orderdate) = 2024
+GROUP BY MONTH(Orderdate)
+ORDER BY MONTH(Orderdate);
+```
+
+ ### Top 5 customers by total purchase amount
+```sql
+SELECT TOP 5 customer_id, SUM(Total_sale) AS total_purchase
+FROM SalesData
+GROUP BY customer_id
+ORDER BY total_purchase DESC;
+```
+
+### Percentage of total sales contributed by each region 
+```sql
+SELECT region,
+SUM(Total_sale) AS total_sales,
+(SUM(Total_sale) / (SELECT SUM(Total_sale) FROM SalesData) * 100) AS percentage_of_total_sales
+FROM SalesData
+GROUP BY region;
+```
+
+### Products with no sales in the last quarter 
+```sql
+SELECT product 
+FROM SalesData
+GROUP BY product
+HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;
+```
+
+-- ==========================
+-- End of SQL Analysis
+-- ==========================
+
 # Visualising Sales Data with Power BI
 ### Power BI Data Preparation
 
@@ -161,7 +250,7 @@ Segment customers based on their **subscription behavior**, **region**, and **pu
 - SQL
 - Power BI
 ---
-## pivot represenaaton
+## pivot Presentation
 ---
 
 ### Subscription Type Report
@@ -195,8 +284,68 @@ The second table provides a comparison of the subscription start date by both su
 
 ![image](https://github.com/user-attachments/assets/b4b22a7a-4107-4701-b778-e9292c208077)
 
+# SQL Queries for CUSOMER SEGMENATION FOR A SUBSCRIPTION SERVICE
 
-# Visualising Sales Data with Power BI
+```sql
+ Select * from [dbo].[CustomerData]
+ ```
+
+ ### retrieve the total number of customers from each region.
+```sql
+Select region, count(CustomerID) as Total_number
+ from [dbo].[CustomerData]
+ group by region
+```
+
+
+ ### the most popular subscription type by the number of customers
+ ```sql
+select subscriptionType, count(customerid) as most_Popular
+ from [dbo].[CustomerData]
+ group by SubscriptionType
+```
+
+ ### customers who canceled their subscription within 6 months
+```sql
+ select customerid from [dbo].[CustomerData]
+ where DATEDIFF(month,subscriptionStart,subscriptionend) <=6
+```
+
+ ### the average subscription duration for all customers.
+ ```sql
+select avg(datediff(day,subscriptionStart,subscriptionend)) as AverageSubscripionDuration
+ from [dbo].[CustomerData]
+ ```
+
+ ### customers with subscriptions longer than 12 months.
+```sql
+ select customerid, subscription_length
+ from [dbo].[CustomerData]
+ where DATEDIFF(month,subscriptionStart,subscriptionend) > 12
+```
+
+ ### Total revenue by subscription type
+```sql select subscriptiontype, sum(revenue) as total_revenue
+from [dbo].[CustomerData]
+group by subscriptiontype;
+```
+
+### Top 3 regions by subscription cancellations.
+```sqlselect top 3 region,count(*) as cancellation 
+from [dbo].[CustomerData]
+where canceled = '0'
+group by region
+order by cancellation desc;
+```
+
+### The total number of active and canceled subscriptions
+ ```sqlselect sum(case when canceled= '1' then 1 else 0 end) as active,
+sum(case when canceled= '0' then 1 else 0 end) as cancelled
+from [dbo].[CustomerData];
+```
+
+
+# Visualising customer Data with Power BI
 ### Power BI Data Preparation
 
 1. I_ Imported the dataset into Power BI.
@@ -208,173 +357,7 @@ The second table provides a comparison of the subscription start date by both su
 
 
 
-# SQL Analysis on Sales Data
-
-## Overview
-This queries provides an analysis of sales data using SQL, Each query addresses a specific aspect of the sales performance.
-
-
-```sql
--- Total sales for each product category --
-SELECT product, SUM(Total_sale) AS Total_sale
-FROM SalesData
-GROUP BY product;
-
--- Number of sales transactions in each region --
-SELECT region, COUNT(*) AS transaction_count
-FROM SalesData
-GROUP BY region;
-
--- Highest-selling product by total sales value --
-SELECT TOP 1 product, SUM(Total_sale) AS total_sales
-FROM SalesData
-GROUP BY product
-ORDER BY total_sales DESC;
-
--- Total revenue per product --
-SELECT product, SUM(Total_sale) AS total_revenue
-FROM SalesData
-GROUP BY product;
-
--- Monthly sales totals for the current year --
-SELECT MONTH(Orderdate) AS month,
-SUM(Total_sale) AS total_sales
-FROM SalesData
-WHERE YEAR(Orderdate) = 2024
-GROUP BY MONTH(Orderdate)
-ORDER BY MONTH(Orderdate);
-
--- Top 5 customers by total purchase amount --
-SELECT TOP 5 customer_id, SUM(Total_sale) AS total_purchase
-FROM SalesData
-GROUP BY customer_id
-ORDER BY total_purchase DESC;
-
--- Percentage of total sales contributed by each region --
-SELECT region,
-SUM(Total_sale) AS total_sales,
-(SUM(Total_sale) / (SELECT SUM(Total_sale) FROM SalesData) * 100) AS percentage_of_total_sales
-FROM SalesData
-GROUP BY region;
-
--- Products with no sales in the last quarter --
-SELECT product
-FROM SalesData
-GROUP BY product
-HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;`
-
--- ==========================
--- End of SQL Analysis
--- ==========================
-
-select * from SalesData
-
-
----total sales for each product category---
-SELECT product, SUM(Total_sale) as Total_sale
-FROM SalesData
-GROUP BY product
-
-
----number of sales transactions in each region--
-SELECT region, COUNT(*) AS transaction_count
-FROM SalesData
-GROUP BY region
-
-
---- highest-selling product by total sales value---
-SELECT top 1 product, SUM(Total_sale) AS total_sales
-FROM SalesData
-GROUP BY product
-ORDER BY total_sales DESC
-
-
----total revenue per product.---
-select product, sum( total_sale) as total_revenue
-from SalesData
-group by product
-
-
----monthly sales totals for the current year.
-SELECT MONTH(Orderdate) AS month,
-  SUM(total_sale) AS total_sales
-FROM SalesData
-WHERE YEAR (Orderdate) =YEAR ('2024')
-GROUP BY 
-    month(Orderdate)
-ORDER BY 
-    month;
-
-
-	---top 5 customers by total purchase amount.---
-SELECT top 5 customer_id, SUM(Total_sale) AS total_purchase
-FROM SalesData
-GROUP BY customer_id
-ORDER BY total_purchase DESC
-
----the percentage of total sales contributed by each region.
-
- 
- ---products with no sales in the last quarter
- Select product from SalesData   group by product
- having sum (case when Orderdate between '2024-06-01' and '2024-08-31' then 1 else 0 end )= 0
 
 
 
 
-
-
-
-
----CUSOMER SEGMENATION FOR A SUBSCRIPTION SERVICE
-
-
-
-
- Select * from [dbo].[CustomerData]
-
- ---retrieve the total number of customers from each region.
- Select region, count(CustomerID) as Total_number
- from [dbo].[CustomerData]
- group by region
-
-
- ---the most popular subscription type by the number of customers
- select subscriptionType, count(customerid) as most_Popular
- from [dbo].[CustomerData]
- group by SubscriptionType
-
- ---customers who canceled their subscription within 6 months
- select customerid from [dbo].[CustomerData]
- where DATEDIFF(month,subscriptionStart,subscriptionend) <=6
-
-
- ----the average subscription duration for all customers.
- select avg(datediff(day,subscriptionStart,subscriptionend)) as AverageSubscripionDuration
- from [dbo].[CustomerData]
- 
-
- ---customers with subscriptions longer than 12 months.
- select customerid, subscription_length
- from [dbo].[CustomerData]
- where DATEDIFF(month,subscriptionStart,subscriptionend) > 12
-
-
- ---Total revenue by subscription type
-select subscriptiontype, sum(revenue) as total_revenue
-from [dbo].[CustomerData]
-group by subscriptiontype
-
-
----Top 3 regions by subscription cancellations.
-select top 3 region,count(*) as cancellation 
-from [dbo].[CustomerData]
-where canceled = '0'
-group by region
-order by cancellation desc
-
-
----The total number of active and canceled subscriptions
-select sum(case when canceled= '1' then 1 else 0 end) as active,
-sum(case when canceled= '0' then 1 else 0 end) as cancelled
-from [dbo].[CustomerData]
