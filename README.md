@@ -4,25 +4,25 @@
 
 [Expected Outcomes](#expected-outcomes)
 
-[Tools](Tools)
+[Tools](#tools)
 
-[Data Understanding and Observations](#Data-Understanding-and-Observations)
+[Data Understanding and Observations](#data-understanding-and-observations)
 
-[SQL Analysis on Sales Data](SQL-Analysis-on-Sales-Data)
+[SQL Analysis on Sales Data](#sql-analysis-on-sales-data)
 
-[Visualising Sales Data with Power BI](Visualising-Sales-Data-with-Power-BI)
+[Visualising Sales Data with Power BI](#visualising-sales-data-with-power-bi)
 
-[Capstone Project 2](#Capstone-Project-2)
+[Capstone Project 2](#capstone-project-2)
 
-[Objective](Objective)
+[Objective](#objective)
 
-[Tools Used](Tools-Used)
+[Tools Used](#tools-used)
 
 [Expected Outcomes](#expected-outcomes)
 
-[pivot Presentation](pivot-Presentation)
+[pivot Presentation](#pivot-presentation)
  
-[Visualising customer Data with Power BI](Visualising-customer-Data-with-Power-BI)
+[Visualising customer Data with Power BI](#visualising-customer-data-with-power-bi)
 
 # Sales Performance Analysis
 
