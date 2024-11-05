@@ -81,6 +81,8 @@ In this formula, "RegionName" is replaced with the specific name of the region w
 
 ## Overview
 This queries provides an analysis of sales data using SQL, Each query addresses a specific aspect of the sales performance.
+
+
 ```sql
 -- Total sales for each product category --
 SELECT product, SUM(Total_sale) AS Total_sale
@@ -105,7 +107,7 @@ GROUP BY product;
 
 -- Monthly sales totals for the current year --
 SELECT MONTH(Orderdate) AS month,
-       SUM(Total_sale) AS total_sales
+SUM(Total_sale) AS total_sales
 FROM SalesData
 WHERE YEAR(Orderdate) = 2024
 GROUP BY MONTH(Orderdate)
@@ -119,8 +121,8 @@ ORDER BY total_purchase DESC;
 
 -- Percentage of total sales contributed by each region --
 SELECT region,
-       SUM(Total_sale) AS total_sales,
-       (SUM(Total_sale) / (SELECT SUM(Total_sale) FROM SalesData) * 100) AS percentage_of_total_sales
+SUM(Total_sale) AS total_sales,
+(SUM(Total_sale) / (SELECT SUM(Total_sale) FROM SalesData) * 100) AS percentage_of_total_sales
 FROM SalesData
 GROUP BY region;
 
@@ -133,3 +135,38 @@ HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE
 -- ==========================
 -- End of SQL Analysis
 -- ==========================
+
+
+
+
+## Capstone Project 2: Customer Segmentation for a Subscription Service
+
+## Objective:
+Segment customers based on their **subscription behavior**, **region**, and **purchase patterns** to:
+- Improve **customer retention**.
+- Create **targeted marketing** strategies.
+- Optimize **subscription plans** to boost revenue and **customer retention value**.
+
+## Tools Used:
+- **Excel** for data cleaning and analysis.
+- **SQL** for querying and data manipulation.
+- **Power BI** for visualization and reporting.
+
+## Expected Outcomes:
+- Enhanced **customer retention** with personalized marketing.
+- Optimized **subscription offerings** to drive revenue.
+- Insights into the most **profitable customer segments** and regions.
+
+### Tools:
+- Excel
+- SQL
+- Power BI
+---
+
+![image](https://github.com/user-attachments/assets/dd2e27d6-a1ec-4c4d-a6ce-542055accc3b)
+![image](https://github.com/user-attachments/assets/4716728d-5968-4f37-b232-3f2e5c3c786b)
+![image](https://github.com/user-attachments/assets/b4b22a7a-4107-4701-b778-e9292c208077)
+
+
+
+
