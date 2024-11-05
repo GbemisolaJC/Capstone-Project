@@ -1,18 +1,18 @@
 # Capstone-Project 
 
-[Project Overview](project-overview)
+[Project Overview](#project-overview)
 
 [Expected Outcomes](#expected-outcomes)
 
 [Tools](Tools)
 
-[Data Understanding and Observations](Data-Understanding-and-Observations)
+[Data Understanding and Observations](#Data-Understanding-and-Observations)
 
 [SQL Analysis on Sales Data](SQL-Analysis-on-Sales-Data)
 
 [Visualising Sales Data with Power BI](Visualising-Sales-Data-with-Power-BI)
 
-[Capstone Project 2](Capstone-Project-2)
+[Capstone Project 2](#Capstone-Project-2)
 
 [Objective](Objective)
 
