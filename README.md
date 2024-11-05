@@ -77,69 +77,56 @@ In this formula, "RegionName" is replaced with the specific name of the region w
 ![image](https://github.com/user-attachments/assets/800e66cf-0d6a-4e18-821a-a54676df455c)
 
 
-`# SQL Analysis on Sales Data
+# Visualising Sales Data with Power BI
+### Power BI Data Preparation
 
-## Overview
-This queries provides an analysis of sales data using SQL, Each query addresses a specific aspect of the sales performance.
+1. Imported the dataset into Power BI.
+2. Corrected the data types for accuracy.
+3. Cleaned the data by rearranging the dates to fit the date data type correctly.
+4. Grouped the dates into months for better analysis.
+5. Created a measure to calculate total revenue.
+
+![image](https://github.com/user-attachments/assets/392bfd13-c07f-43c4-a5e7-50b0147a7f45)
 
 
-```sql
--- Total sales for each product category --
-SELECT product, SUM(Total_sale) AS Total_sale
-FROM SalesData
-GROUP BY product;
+## Sales Total Revenue & Total Quantity of Products Sold
 
--- Number of sales transactions in each region --
-SELECT region, COUNT(*) AS transaction_count
-FROM SalesData
-GROUP BY region;
+These metrics offer a high-level overview of the overall sales performance. The **Total Revenue** ($2,101,090) reflects the financial success, while the **Total Quantity of Products Sold** (68,461) indicates the volume of products moved. Together, these figures summarize the business’s achievements in terms of revenue generation and product demand.
 
--- Highest-selling product by total sales value --
-SELECT TOP 1 product, SUM(Total_sale) AS total_sales
-FROM SalesData
-GROUP BY product
-ORDER BY total_sales DESC;
+## Sales Distribution by Region (Pie Chart)
 
--- Total revenue per product --
-SELECT product, SUM(Total_sale) AS total_revenue
-FROM SalesData
-GROUP BY product;
+This pie chart illustrates the distribution of sales across different regions. The **East region** leads with 44.16% of total sales, followed by the **North region** at 23.13%, with other regions contributing smaller shares. This breakdown helps identify regional strengths, allowing the business to focus on high-performing areas or to develop targeted strategies for regions with lower sales.
 
--- Monthly sales totals for the current year --
-SELECT MONTH(Orderdate) AS month,
-SUM(Total_sale) AS total_sales
-FROM SalesData
-WHERE YEAR(Orderdate) = 2024
-GROUP BY MONTH(Orderdate)
-ORDER BY MONTH(Orderdate);
+## Top Selling Products (Bar Chart)
 
--- Top 5 customers by total purchase amount --
-SELECT TOP 5 customer_id, SUM(Total_sale) AS total_purchase
-FROM SalesData
-GROUP BY customer_id
-ORDER BY total_purchase DESC;
+This bar chart highlights the best-selling products, with **Shoes** being the highest-selling item, followed by **Shirts** and **Hats**. This insight helps identify the most popular products that drive significant revenue, guiding inventory management and marketing efforts toward these high-demand items.
 
--- Percentage of total sales contributed by each region --
-SELECT region,
-SUM(Total_sale) AS total_sales,
-(SUM(Total_sale) / (SELECT SUM(Total_sale) FROM SalesData) * 100) AS percentage_of_total_sales
-FROM SalesData
-GROUP BY region;
+## Quantity Sold by Region (Donut Chart)
 
--- Products with no sales in the last quarter --
-SELECT product
-FROM SalesData
-GROUP BY product
-HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;`
+The donut chart shows the distribution of product quantities sold by region. It reveals a fairly even distribution, with each region contributing approximately the same share. This balance suggests that demand for products is relatively uniform across all regions.
 
--- ==========================
--- End of SQL Analysis
--- ==========================
+## Quantity of Product Sold by Month (Stacked Bar Chart)
+
+This chart shows the monthly sales breakdown of products, highlighting seasonal demand variations. 
+
+- **Hats** peak in sales in **March**.
+- **Shoes** and **shirts** have consistent demand year-round.
+
+This data aids in inventory and marketing strategy planning.
 
 
 
 
-## Capstone Project 2: Customer Segmentation for a Subscription Service
+
+
+
+
+
+
+
+
+
+# Capstone Project 2: Customer Segmentation for a Subscription Service
 
 ## Objective:
 Segment customers based on their **subscription behavior**, **region**, and **purchase patterns** to:
@@ -162,15 +149,45 @@ Segment customers based on their **subscription behavior**, **region**, and **pu
 - SQL
 - Power BI
 ---
-pivot represenaaton
+## pivot represenaaton
+---
+
+### Subscription Type Report
+
+This report provides the total number of customers for each subscription type. It highlights customer distribution across different subscription plans, offering insights into popular subscription tiers and customer preferences.
+
 ![image](https://github.com/user-attachments/assets/dd2e27d6-a1ec-4c4d-a6ce-542055accc3b)
-This report shows the total number of customers in each Subscription type.
+
+### Customer Subscription Analysis
+
+## Table 1: Active vs. Canceled Customers
+This table presents the count of active customers compared to those who have canceled their subscriptions. This data provides an overview of customer retention and cancellation rates.
+
+## Table 2: Retention Analysis for 2022 and 2023
+The second table dives deeper into customer retention trends by showing:
+- The number of customers who canceled their subscriptions in 2022 and 2023.
+- The number of customers who remained active across both years.
+
+These insights help assess the effectiveness of retention efforts and identify patterns in customer loyalty over time.
+
 
 ![image](https://github.com/user-attachments/assets/4716728d-5968-4f37-b232-3f2e5c3c786b)
-The first table 
+
+
+## Table 1: Subscription Start Date by Quarter
+The first table compares the subscription start date with each quarter of the year. This analysis helps identify trends in customer sign-ups by quarter, revealing any seasonal patterns in subscription activity.
+
+## Table 2: Subscription Start Date by Type and Year
+The second table provides a comparison of the subscription start date by both subscription type and year. This breakdown offers insights into how different subscription types have trended over time, helping to assess long-term customer preferences.
+
 
 ![image](https://github.com/user-attachments/assets/b4b22a7a-4107-4701-b778-e9292c208077)
 
 
+# Visualising Sales Data with Power BI
+### Power BI Data Preparation
 
+1. I_ Imported the dataset into Power BI.
+2. I Corrected the data types for accuracy.
+3. I Cleaned the data by rearranging the dates to fit the date data type correctly.
 
