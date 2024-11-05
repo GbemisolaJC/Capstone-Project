@@ -1,8 +1,16 @@
 # Capstone-Project (Sales Performance Analysis)
 
-[Project Overview: Analyzing Sales Data](##Project-Overview:-Analyzing-Sales-Data)
+[Project Overview](project-overview)
 
-[Expected Outcomes:](###Expected-Outcomes:)
+[Expected Outcomes](#expected-outcomes)
+
+[Tools](Tools)
+
+[Data Understanding and Observations](Data-Understanding-and-Observations)
+
+[Visualising Sales Data with Power BI](Visualising-Sales-Data-with-Power-BI)
+
+[Capstone Project 2](Capstone-Project-2)
 
 ## Project Overview: Analyzing Sales Data
 
