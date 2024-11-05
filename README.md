@@ -1,5 +1,9 @@
 # Capstone-Project (Sales Performance Analysis)
 
+[Project Overview: Analyzing Sales Data](##Project-Overview:-Analyzing-Sales-Data)
+
+[Expected Outcomes:](###Expected-Outcomes:)
+
 ## Project Overview: Analyzing Sales Data
 
 **Objective**:  
