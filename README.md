@@ -191,3 +191,6 @@ The second table provides a comparison of the subscription start date by both su
 2. I Corrected the data types for accuracy.
 3. I Cleaned the data by rearranging the dates to fit the date data type correctly.
 
+![image](https://github.com/user-attachments/assets/6e956cd5-6a00-4bc9-b5c0-f92284a5c631)
+
+
