@@ -216,7 +216,12 @@ This chart shows the monthly sales breakdown of products, highlighting seasonal 
 This data aids in inventory and marketing strategy planning.
 
 
+## Conclusion
 
+The sales data analysis showed that:
+
+1. **Top Products**: Gloves clear best-sellers.
+2. **Regional Strengths**: East perform better than others.
 
 
 
