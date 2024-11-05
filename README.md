@@ -1,7 +1,5 @@
 # Capstone-Project 
 
-[Project Overview](#project-overview)
-
 [Expected Outcomes](#expected-outcomes)
 
 [Tools](#tools)
@@ -12,7 +10,7 @@
 
 [Visualising Sales Data with Power BI](#visualising-sales-data-with-power-bi)
 
-[Capstone Project 2](#capstone-project-2)
+## Capstone Project 2
 
 [Objective](#objective)
 
