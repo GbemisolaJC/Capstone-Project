@@ -77,7 +77,7 @@ In this formula, "RegionName" is replaced with the specific name of the region w
 ![image](https://github.com/user-attachments/assets/800e66cf-0d6a-4e18-821a-a54676df455c)
 
 
-# SQL Analysis on Sales Data
+`# SQL Analysis on Sales Data
 
 ## Overview
 This queries provides an analysis of sales data using SQL, Each query addresses a specific aspect of the sales performance.
@@ -130,7 +130,7 @@ GROUP BY region;
 SELECT product
 FROM SalesData
 GROUP BY product
-HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;
+HAVING SUM(CASE WHEN Orderdate BETWEEN '2024-06-01' AND '2024-08-31' THEN 1 ELSE 0 END) = 0;`
 
 -- ==========================
 -- End of SQL Analysis
@@ -162,9 +162,13 @@ Segment customers based on their **subscription behavior**, **region**, and **pu
 - SQL
 - Power BI
 ---
-
+pivot represenaaton
 ![image](https://github.com/user-attachments/assets/dd2e27d6-a1ec-4c4d-a6ce-542055accc3b)
+This report shows the total number of customers in each Subscription type.
+
 ![image](https://github.com/user-attachments/assets/4716728d-5968-4f37-b232-3f2e5c3c786b)
+The first table 
+
 ![image](https://github.com/user-attachments/assets/b4b22a7a-4107-4701-b778-e9292c208077)
 
 
